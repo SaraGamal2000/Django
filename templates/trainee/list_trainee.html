@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>authors - list</title>
+  </head>
+  <body>
+    <h1>trainee list</h1>
+    <!--{{trainees}}-->
+    <table border="1px solid" width="500">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Track_id</th>
+        <th>Actions</th>
+      </tr>
+      {%for trainee in trainees%}
+      <tr>
+        <td>{{trainee.id}}</td>
+        <td>{{trainee.name}}</td>
+        <td>{{trainee.track_id}}</td>
+        <td>
+          <a href="http://127.0.0.1:8080/trainee/create_trainee">Create</a>
+          <a href="http://127.0.0.1:8080/trainee/update_trainee/{{trainee.id}}"
+            >Update</a
+          >
+          <a href="http://127.0.0.1:8080/trainee/delete_trainee/{{trainee.id}}"
+            >Delete</a
+          >
+          <a href="http://127.0.0.1:8080/trainee/trainee_detail/{{ trainee.id }}/"
+            >Details</a
+          >
+        </td>
+      </tr>
+
+      {%endfor%}
+    </table>
+  </body>
+</html>

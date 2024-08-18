@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>authors - list</title>
+  </head>
+  <body>
+    <h1>account list</h1>
+    <!--{{accounts}}-->
+    <table border="1px solid" width="500">
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Actions</th>
+      </tr>
+      {%for account in accounts%}
+      <tr>
+        <td>{{account.id}}</td>
+        <td>{{account.username}}</td>
+        <td>{{account.email}}</td>
+        <td>{{account.password}}</td>
+        <td>
+          <a href="http://127.0.0.1:8080/account/create_account">Create</a>
+          <a href="http://127.0.0.1:8080/account/update_account/{{account.id}}"
+            >Update</a
+          >
+          <a href="http://127.0.0.1:8080/account/delete_account/{{account.id}}"
+            >Delete</a
+          >
+          <a
+            href="http://127.0.0.1:8080/account/account_detail/{{ account.id}}/"
+            >Details</a
+          >
+        </td>
+      </tr>
+
+      {%endfor%}
+    </table>
+  </body>
+</html>

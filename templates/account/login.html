@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    {% comment %} <form method="post">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" />
+      <br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Login</button>
+    </form> {% endcomment %}
+
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Register</button>
+  </form>
+  </body>
+</html>
