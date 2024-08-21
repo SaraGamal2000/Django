@@ -1,0 +1,39 @@
+{% extends './base.html'%}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>tracks_list</title>
+  </head>
+  <body>
+    <h1>tracks list</h1>
+    <table border=1px solid width=1500px>
+      <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>id_track_id</td>
+        <td>action</td>
+      </tr>
+      
+          
+          {%for t in tracks %}
+        <tr>
+          <td><h3>{{t.name}}</h3></td>
+          <td><h3>{{t.id}}</h3></td>
+          <td><h3>{{t.id_track_id}}</h3></td>
+          <td>
+            <a href='{%url 'track_detail' t.id%}'>show_detail</a>___
+            <a href='{%url 'update_track' t.id%}'>update</a>___
+            <a href='{%url 'create_track' %}'>create</a>___
+            <a href='{%url 'delete_track' t.id%}'>delete</a>
+         </td>
+      </tr>
+
+        {%endfor%}
+    </table>
+  </body>
+</html>
+{% endblock content %}

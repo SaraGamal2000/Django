@@ -2,38 +2,32 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>authors - list</title>
+    <title>trainees_list</title>
   </head>
   <body>
-    <h1>trainee list</h1>
-    <!--{{trainees}}-->
-    <table border="1px solid" width="500">
+    <h1>trainees list</h1>
+    <table border=1px solid width=1500px>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Track_id</th>
-        <th>Actions</th>
+        <td>id</td>
+        <td>name</td>
+        <td>id_track_id</td>
+        <td>action</td>
       </tr>
-      {%for trainee in trainees%}
-      <tr>
-        <td>{{trainee.id}}</td>
-        <td>{{trainee.name}}</td>
-        <td>{{trainee.track_id}}</td>
-        <td>
-          <a href="http://127.0.0.1:8080/trainee/create_trainee">Create</a>
-          <a href="http://127.0.0.1:8080/trainee/update_trainee/{{trainee.id}}"
-            >Update</a
-          >
-          <a href="http://127.0.0.1:8080/trainee/delete_trainee/{{trainee.id}}"
-            >Delete</a
-          >
-          <a href="http://127.0.0.1:8080/trainee/trainee_detail/{{ trainee.id }}/"
-            >Details</a
-          >
-        </td>
+      
+          
+          {%for t in trainees %}
+        <tr>
+          <td><h3>{{t.name}}</h3></td>
+          <td><h3>{{t.id}}</h3></td>
+          <td><h3>{{t.id_track_id}}</h3></td>
+          <td>
+            <a href='{%url 'trainee_detail' t.id%}'>show_detail</a>___
+            <a href='{%url 'update_trainee' t.id%}'>update</a>___
+            <a href='{%url 'delete_trainee' t.id%}'>delete</a>
+         </td>
       </tr>
 
-      {%endfor%}
+        {%endfor%}
     </table>
   </body>
 </html>
