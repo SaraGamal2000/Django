@@ -5,23 +5,29 @@
     <title>authors - list</title>
   </head>
   <body>
+    
     <h1>account list</h1>
     <!--{{accounts}}-->
+   <h1> <a href="http://127.0.0.1:8080/account/create_account">Create or add Account</a></h1>
+
     <table border="1px solid" width="500">
       <tr>
-        <th>Username</th>
+        <th>id</th>
+        <th>f_name</th>
+        <th>l_name</th>
         <th>Email</th>
         <th>Password</th>
         <th>Actions</th>
       </tr>
       {%for account in accounts%}
       <tr>
-        <td>{{account.id}}</td>
-        <td>{{account.username}}</td>
+        <td>{{account.fid}}</td>
+        <td>{{account.fname}}</td>
+        <td>{{account.lname}}</td>
         <td>{{account.email}}</td>
         <td>{{account.password}}</td>
         <td>
-          <a href="http://127.0.0.1:8080/account/create_account">Create</a>
+        
           <a href="http://127.0.0.1:8080/account/update_account/{{account.id}}"
             >Update</a
           >

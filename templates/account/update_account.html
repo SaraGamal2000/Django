@@ -2,3 +2,53 @@
     <h1>Update account of id : {{id}}</h1>
 </div>
 
+{% comment %} <form method="POST" enctype="multipart/form-data">
+    {%csrf_token%} {{form.as_p}}
+  
+    <input type="submit" value="Update" />
+  </form>
+   {% endcomment %}
+
+   
+{%block 'title'%}
+book - Update
+{%endblock%}
+{%block 'content'%}
+<h1>book Update {{id}}</h1>
+<form method="POST">
+    {%csrf_token%}
+    <label>id:</label>
+    <input type="number" name="id" required value="{{accounts.id}}">
+<br>
+
+    <label>FName:</label>
+    <input type="text" name="accname" required value="{{accounts.fname}}">
+<br>
+<label>LName:</label>
+<input type="text" name="accname" required value="{{accounts.Lname}}">
+<label>Femail:</label>
+    <input type="email" name="email" required value="{{accounts.email}}">
+<br>
+<label>password:</label>
+    <input type="password" name="password" required value="{{accounts.password}}">
+<br>
+    {% comment %} <label>image:</label>
+    <input type="file" name="bookimage">
+    <img src="{{book.image}}"/>
+    <br>
+  <label>author:</label> {% endcomment %}
+
+    {% comment %} <select name="bookauthorid">
+        {%for acc in accounts%}
+        <option value="{{acc.id}}"     {%if author.id == book.authorobj.id%}
+    selected {%endif%} >{{author.name}}</option>
+        {%endfor%}
+    </select> {% endcomment %}
+<br>
+<input type="submit" value="Update">
+
+</form>
+<div style="color:red">
+    <h1>{{error}}</h1>
+</div>
+{%endblock%}
