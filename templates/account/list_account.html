@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>authors - list</title>
+    <title>Accounts - list</title>
   </head>
   <body>
     
@@ -10,13 +10,14 @@
     <!--{{accounts}}-->
    <h1> <a href="http://127.0.0.1:8080/account/create_account">Create or add Account</a></h1>
 
-    <table border="1px solid" width="500">
+    <table border="1px solid" width="1200">
       <tr>
         <th>id</th>
         <th>f_name</th>
         <th>l_name</th>
         <th>Email</th>
         <th>Password</th>
+        <th>image</th>
         <th>Actions</th>
       </tr>
       {%for account in accounts%}
@@ -26,6 +27,7 @@
         <td>{{account.lname}}</td>
         <td>{{account.email}}</td>
         <td>{{account.password}}</td>
+        <td>{{account.image}}</td>
         <td>
         
           <a href="http://127.0.0.1:8080/account/update_account/{{account.id}}"

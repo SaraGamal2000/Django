@@ -1,5 +1,9 @@
 
 <div>
-  <h1>Details of account number : {{id}}</h1>
-
+  <h1>Details of account number : {{ account.id }}</h1>
+  {% if account.image %}
+    <img src="{{ account.image.url }}">
+  {% else %}
+    <p>No image available.</p>
+  {% endif %}
 </div>
