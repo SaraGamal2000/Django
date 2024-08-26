@@ -1,4 +1,42 @@
 <div>
+    <h1>Update trainee of id : {{id}}</h1>
+  </div>
+  {%block 'content'%}
+  
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      value="{{ trainee.name }}"
+      required
+    />
+  
+    <label for="id_track">id_track:</label>
+    <select name="id_track" id="id_track" required>
+        <option value="" disabled>Select a Track</option>
+        {% for track in tracks %}
+            <option value="{{ track.id }}" {% if trainee.id_track.id == track.id %}selected{% endif %}>
+                {{ track.id}}
+            </option>
+        {% endfor %}
+    </select>
+  
+    <label>image:</label>
+    <input type="file" name="trainee_image"  id="image" value="{{ trainee.image}}" required />
+    <button type="submit">Update trainee</button>
+  </form>
+  <div style="color: red">
+    <h1>{{error}}</h1>
+  </div>
+  {%endblock%}
+  
+
+
+
+{% comment %} <div>
     <h1>Update Trainee of id : {{id}}</h1>
 </div>
-
+ {% endcomment %}

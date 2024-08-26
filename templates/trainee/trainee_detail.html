@@ -1,9 +1,17 @@
 
-
 <div>
+  <h1>Details of trainee number : {{ trainee.id }}</h1>
+  {% if trainee.image %}
+    <img src="{{ trainee.image.url }}">
+  {% else %}
+    <p>No image available.</p>
+  {% endif %}
+</div>
+
+{% comment %} <div>
   <h1>Details of Trainee</h1>
   <h1>id : {{trainees.id}}</h1>
   <h1> name: {{trainees.name}}</h1>
   <h1> track: {{trainees.id_track_id}}</h1>
 
-</div>
+</div> {% endcomment %}

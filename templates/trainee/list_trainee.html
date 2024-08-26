@@ -2,6 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>trainees - list</title>
+  </head>
+  <body>
+    
+    <h1>trainee list</h1>
+    <!--{{trainees}}-->
+   <h1> <a href="http://127.0.0.1:8080/trainee/create_trainee">Create or add trainee</a></h1>
+
+    <table border="1px solid" width="1200">
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>id_track</th>
+        <th>image</th>
+        <th>Actions</th>
+      </tr>
+      {%for trainee in trainee%}
+      <tr>
+        <td>{{trainee.id}}</td>
+        <td>{{trainee.name}}</td>
+        <td>{{trainee.id_track}}</td>
+        <td>{{trainee.image}}</td>
+        <td>
+        
+          <a href="http://127.0.0.1:8080/trainee/update_trainee/{{trainee.id}}"
+            >Update</a
+          >
+          <a href="http://127.0.0.1:8080/trainee/delete_trainee/{{trainee.id}}"
+            >Delete</a
+          >
+          <a
+            href="http://127.0.0.1:8080/trainee/trainee_detail/{{ trainee.id}}/"
+            >Details</a
+          >
+        </td>
+      </tr>
+
+      {%endfor%}
+    </table>
+  </body>
+</html>
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
     <title>trainees_list</title>
   </head>
   <body>
@@ -30,4 +78,4 @@
         {%endfor%}
     </table>
   </body>
-</html>
+</html> {% endcomment %}

@@ -1,4 +1,18 @@
+<div>
+  <h1>Create trainee</h1>
+</div>
 
+<form method="POST" enctype="multipart/form-data">
+  {%csrf_token%} {{form.as_p}}
+
+  <input type="submit" value="Add" />
+</form>
+
+
+
+
+
+{% comment %} 
 <div>
     <h1>Create Trainee</h1>
 </div>
@@ -18,4 +32,4 @@
         <input type="text" id="department" name="department" required />
     </div>
   <button type="submit">Submit</button>
-</form> 
+</form>  {% endcomment %}
