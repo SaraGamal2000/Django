@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Login</title>
-  </head>
-  <body>
-    <h1>Login</h1>
-    {% comment %} <form method="post">
-      {% csrf_token %}
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" />
-      <br />
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" />
-      <button type="submit">Login</button>
-    </form> {% endcomment %}
+</head>
+<body>
 
-    <form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Register</button>
-  </form>
-  </body>
+    <h1>Login page</h1>
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %}
+          <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+   
+    <!-- Set the action to 'login' view instead of 'list_account' -->
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %} 
+      
+      <div class="container">
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" id="email" required>
+    
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+    
+        <button type="submit">Login</button>
+      </div>
+    </form> 
+</body>
 </html>

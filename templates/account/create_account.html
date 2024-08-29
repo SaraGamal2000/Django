@@ -1,10 +1,12 @@
 <div>
-  <h1>Create account</h1>
+  <h1>form of Registeration Create account</h1>
 </div>
 
 <form method="POST" enctype="multipart/form-data">
   {%csrf_token%} {{form.as_p}}
 
-  <input type="submit" value="Add" />
+  <input type="submit" value="Register" />
+  <input type="submit" value="Login"  />
+  <a href="{% url 'login' %}">Log In</a>
 </form>
 

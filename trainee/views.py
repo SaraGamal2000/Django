@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import Trainee ,Track
 from .forms import Newtrainee
 from django.shortcuts import render,redirect
+from .modelForm import TraineeModelForm
 # Create your views here.
 
 def list_trainee(request):
@@ -17,24 +18,39 @@ def create_trainee(request):
     context = {}
     
     if request.method == 'POST':
-        form = Newtrainee(request.POST,request.FILES)
+        form = TraineeModelForm(request.POST, request.FILES)
         context['form'] = form
         if form.is_valid():
-            
-            id = form.cleaned_data['id']
-            name = form.cleaned_data['name']
-            id_track = form.cleaned_data['id_track']
-            image = form.cleaned_data['image']
-
-            
-            Trainee.create_trainee(id, name, id_track,image)
-            return redirect('list_trainee') 
+         
+            form.save()
+            return redirect('list_trainee')  
             
     else:
-        form = Newtrainee()
+        form = TraineeModelForm()
         context['form'] = form
     
     return render(request, 'trainee/create_trainee.html', context)
+    # context = {}
+    
+    # if request.method == 'POST':
+    #     form = Newtrainee(request.POST,request.FILES)
+    #     context['form'] = form
+    #     if form.is_valid():
+            
+    #         id = form.cleaned_data['id']
+    #         name = form.cleaned_data['name']
+    #         id_track = form.cleaned_data['id_track']
+    #         image = form.cleaned_data['image']
+
+            
+    #         Trainee.create_trainee(id, name, id_track,image)
+    #         return redirect('list_trainee') 
+            
+    # else:
+    #     form = Newtrainee()
+    #     context['form'] = form
+    
+    # return render(request, 'trainee/create_trainee.html', context)
 
 def trainee_detail(request,id):
     context = {"id":id,'trainee':Trainee.objects.get(pk=id)}

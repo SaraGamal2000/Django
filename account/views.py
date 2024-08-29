@@ -2,13 +2,39 @@ from django.shortcuts import render
 from .models import Account
 from .forms import NewAccount
 from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
 # from dajax.core import Dajax
 # from dajaxice.utils import deserialize_form
 # Create your views here.
 
 def login(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        
+        # Authenticate the user
+        user = authenticate(username=email, password=password)
+        
+        if user is not None:
+            auth_login(request, user)
+            
+            # Check if any account exists with the given email
+            account_exists = Account.objects.filter(email=email).exists()
+            
+            if account_exists:
+                # Redirect to the list of accounts if the account exists
+                return redirect('list_account')
+            else:
+                # Show an error message if the account doesn't exist
+                messages.error(request, 'No account found with this email.')
+        else:
+            # Show an error message if authentication fails
+            messages.error(request, 'Invalid email or password.')
     
-    return render(request,'account/login.html')
+    return render(request, 'account/login.html')
+            
+    # return render(request,'account/login.html')
 
 
 def list_account(request):

@@ -11,6 +11,17 @@ class Account(models.Model):
     # ,Blank=True
     
     @classmethod
+    # def login(cls,email,password):
+    #    user = authenticate(username=email, password=password)
+    #     if user is not None:
+            
+    #         return user
+    #     else:
+    #         return None
+                
+    
+    
+    @classmethod
     def create_acc(cls,id,fname,lname,email,password,image):
         acc_obj = Account(
             id=id,

@@ -5,10 +5,9 @@
     <title>Accounts - list</title>
   </head>
   <body>
-    
     <h1>account list</h1>
     <!--{{accounts}}-->
-   <h1> <a href="http://127.0.0.1:8080/account/create_account">Create or add Account</a></h1>
+    
 
     <table border="1px solid" width="1200">
       <tr>
@@ -29,7 +28,6 @@
         <td>{{account.password}}</td>
         <td>{{account.image}}</td>
         <td>
-        
           <a href="http://127.0.0.1:8080/account/update_account/{{account.id}}"
             >Update</a
           >
@@ -45,5 +43,13 @@
 
       {%endfor%}
     </table>
+
+    <h1>
+      <div><a href="http://127.0.0.1:8080/account/create_account">Registeration</a></div>
+        <div><a href="{% url 'login' %}">Log In</a></div>
+    </h1>
+    {% comment %} <input type="submit" value="Register" />
+    
+    <input type="submit" value="Login" <a href="{% url 'login' %}">Log In</a> /> {% endcomment %}
   </body>
 </html>
